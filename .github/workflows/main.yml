@@ -15,7 +15,7 @@ jobs:
       - name: Build APK
         run: bash ./gradlew assembleDebug --stacktrace
       - name: Upload APK
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: apk
           path: ./omniNotes/build/outputs/apk/alpha/debug/*.apk
