@@ -19,3 +19,8 @@ jobs:
         with:
           name: apk
           path: ./omniNotes/build/outputs/apk/alpha/debug/*.apk
+      - name: Send Event to Another Repository
+        run: |
+          curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/gabrielefantini/AppiumContinuousIntegration/actions/workflows/build.yaml/dispatches --data '{"ref": "master"}'
+        
+
