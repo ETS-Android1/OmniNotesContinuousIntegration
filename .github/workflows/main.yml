@@ -19,8 +19,11 @@ jobs:
         with:
           name: apk
           path: ./omniNotes/build/outputs/apk/alpha/debug/*.apk
-      - name: Send Event to Another Repository
+      - name: Send Event to Appium Repository
         run: |
           curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/gabrielefantini/AppiumContinuousIntegration/actions/workflows/appium.yml/dispatches --data '{"ref": "master"}'
-        
+
+      - name: Send Event to Sikuli Repository
+        run: |
+          curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/gabrielefantini/SikuliContinuousIntegration/actions/workflows/main.yml/dispatches --data '{"ref": "master"}'
 
